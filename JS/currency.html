@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Currency Exchange</title>
+        <script>
+           
+             document.addEventListener('DOMContentLoaded', function() {
+
+                document.querySelector('form').onsubmit = function() {
+
+                    var myHeaders = new Headers();
+                    myHeaders.append("apikey", "VTQJimG0qmuI3EgIqvskMYudTTnnu37t");
+
+                    var requestOptions = {
+                    method: 'GET',
+                    redirect: 'follow',
+                    headers: myHeaders
+                    };
+
+                    fetch("https://api.apilayer.com/currency_data/change?start_date=2022-11-19&end_date=2022-11-18", requestOptions)
+                    .then(response => response.json())
+                    .then(data => {
+                        const currency = document.querySelector('#currency').value;
+                        const rate = data.quotes.USDAFN.end_rate;
+                        const rate2 = data.start_date;
+                        
+                        document.querySelector('result').innerHTML = `1 USD rate is ${rate.toFixed(3)} EURO at ${rate2}`;
+                    })
+                    .catch( error => {
+                        console.log('Errpr:', error)
+                    
+                    });
+
+                    return false;
+                }
+
+             });
+            // var myHeaders = new Headers();
+            // myHeaders.append("apikey", "VTQJimG0qmuI3EgIqvskMYudTTnnu37t");
+
+            // var requestOptions = {
+            // method: 'GET',
+            // redirect: 'follow',
+            // headers: myHeaders
+            // };
+
+            // fetch("https://api.apilayer.com/currency_data/change?start_date=2022-11-19&end_date=2022-11-18", requestOptions)
+            //   .then(response => response.text())
+            //   .then(result => console.log(result))
+            //   .catch(error => console.log('error', error));
+
+            
+        </script>
+    </head>
+    <body>
+        <form>
+            <input id="currency" placeholder="Currency" type="text">
+            <input type="submit" value="Convert">
+            <div id="result">
+                
+            </div>
+        </form>
+    </body>
+</html>
