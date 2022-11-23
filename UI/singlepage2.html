@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Single Page 2</title>
+        <style>
+
+        </style>
+        <script>
+
+            window.onpopstate = function(event) {
+                console.log(event.state.section);
+                showSection(event.state.section);
+            }
+
+            function showSection(section) {
+                fetch(``)
+
+            }
+        </script>
+    </head>
+    <body>
+               <button data-page="section1">Section 1</button>
+        <button data-page="section2">Section 2</button>
+        <button data-page="section3">Section 3</button>
+        <div id="section1">
+            <h1>This is Page 1</h1>
+        </div>
+        <div id="section2">
+            <h1>This is Page 2</h1>
+        </div>
+        <div id="section3">
+            <h1>This is Page 3</h1>
+        </div>
+    </body>
+</html>
