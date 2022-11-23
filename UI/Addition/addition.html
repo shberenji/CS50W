@@ -21,7 +21,38 @@
             #winner {
                 font-size:72px;
                 color: green;
+                width: 400px;
+                height: 100px;
+                background-color: gold;
+                position: relative;
+                animation-name: winner;
+                animation-duration: 3s;
+                left: 450px;
+                top: 100px;
+                animation-iteration-count: infinite;
             }
+
+            @keyframes winner {
+                0%   {background-color: blue; left:450px; top:100px;}
+                50%  {background-color:gold; left:450px; top:300px;}
+                100%  {background-color:blue; left:450px; top:100px;}
+                }
+
+            #main {
+                width: 400px;
+                height: 150px;
+                background-color: yellow;
+                position: relative;
+                animation-name: example;
+                animation-duration: 5s;
+                left: 450px;
+                top: 100px;
+                }
+
+                @keyframes example {
+                0%   {background-color:red; left:0px; top:0px;}
+                100%  {background-color:yellow; left:450px; top:100px;}
+                }
         </style>
 
         <title>ADDITION</title>
@@ -83,7 +114,7 @@
                 }
 
                 return (
-                    <div>
+                    <div id="main">
                         <div className={state.incorrect ? "incorrect" : ""} id="problem">{state.num1} + {state.num2}</div>
                         <input autoFocus={true} onKeyPress={inputKeyPress} onChange={updateResponse} value={state.Response}/>
                         <div>Score: {state.score}</div>
